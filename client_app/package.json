@@ -1,0 +1,45 @@
+{
+  "name": "measure",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "run-p cdk",
+    "dev": "next dev -p 3000",
+    "prebuild": "run-p cdk",
+    "build": "next build",
+    "start": "next start",
+    "precdk": "npm run --prefix cdk build",
+    "cdk": "cdk --outputs-file pages/cdk_resource.json deploy -a cdk/bin/cdk.js",
+    "postcdk": "node utils/generate_registration.js && node utils/uni_controller.js"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.19",
+    "@headlessui/react": "^1.2.0",
+    "@heroicons/react": "^1.0.1",
+    "@tailwindcss/forms": "^0.3.2",
+    "aws-sdk": "^2.916.0",
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.12.4",
+    "md5": "^2.3.0",
+    "next": "10.2.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-grid-layout": "^1.2.5",
+    "recharts": "^2.0.9"
+  },
+  "devDependencies": {
+    "@types/md5": "^2.3.0",
+    "@types/next-auth": "^3.15.0",
+    "@types/react": "17.0.6",
+    "@types/react-grid-layout": "^1.1.1",
+    "amazon-cognito-identity-js": "^5.0.2",
+    "autoprefixer": "^10.2.5",
+    "aws4": "^1.11.0",
+    "colors": "^1.4.0",
+    "npm-run-all": "^4.1.5",
+    "ora": "^3.4.0",
+    "postcss": "^8.3.0",
+    "tailwindcss": "^2.1.2",
+    "typescript": "4.2.4"
+  }
+}
