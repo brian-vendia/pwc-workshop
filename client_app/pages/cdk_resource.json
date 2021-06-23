@@ -1,7 +1,0 @@
-{
-  "CdkStack": {
-    "cognitoclientid": "6c76j2hk8q67kn5j9pbvenqe91",
-    "cognitopool": "us-east-1_WmJh5hmth",
-    "sqsqueuearn": "arn:aws:sqs:us-east-1:052143272177:CdkStack-IntegrationQueueE55B58B4-18DTWD8TQTHSE"
-  }
-}

@@ -1,16 +1,12 @@
 {
-  "name": "measure",
+  "name": "vendia-workshop",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "run-p cdk",
     "dev": "next dev -p 3000",
-    "prebuild": "run-p cdk",
     "build": "next build",
     "start": "next start",
-    "precdk": "npm run --prefix cdk build",
-    "cdk": "cdk --outputs-file pages/cdk_resource.json deploy -a cdk/bin/cdk.js",
-    "postcdk": "node utils/generate_registration.js && node utils/uni_controller.js"
+    "prestart": "node utils/generate_registration.js && node utils/uni_controller.js"
   },
   "dependencies": {
     "@apollo/client": "^3.3.19",
@@ -25,7 +21,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-grid-layout": "^1.2.5",
-    "recharts": "^2.0.9"
+    "recharts": "^2.0.9",
+    "stringify-object": "^3.3.0"
   },
   "devDependencies": {
     "@types/md5": "^2.3.0",
