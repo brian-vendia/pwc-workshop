@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://vendia.net/schemas/solutions/kinesis-to-share.json",
+    "title": "heroes-react",
+    "description": "Storing hero and villian data",
+    "type": "object",
+    "properties": {
+        "Hero": {
+            "description": "Hero information",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Villian": {
+            "description": "Villian information",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "test-heroes-react",
+    "schema": "schema.json",
+    "initState": "initial-state.json",
+    "nodes": [
+        {
+            "name": "Node1",
+            "userId": "you@domain.com",
+            "region": "us-west-2",
+            "settings": {
+                "auth": {
+                    "authorizerType": "COGNITO",
+                    "authorizerArn": "arn:aws:cognito-idp:region:123456789012:userpool/region_uniqueid"
+                }    
+            }
+        },
+        {
+            "name": "Node2",
+            "userId": "you@domain.com",
+            "region": "us-east-1"
+        },
+        {
+            "name": "Node3",
+            "userId": "you@domain.com",
+            "region": "us-east-2"
+        }
+    ]
+}

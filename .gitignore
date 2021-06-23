@@ -44,3 +44,6 @@ node_modules
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+
+# Uni files
+registration.json

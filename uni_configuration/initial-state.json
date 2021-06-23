@@ -1,0 +1,66 @@
+{
+    "Hero": [
+        {
+            "username": "UniInitialization",
+            "slug": "HeroAslaug",
+            "name": "Aslaug",
+            "description": "warrior queen"
+        },
+        {
+            "username": "UniInitialization",
+            "slug": "HeroBjorn",
+            "name": "Bjorn Ironside",
+            "description": "king of 9th century Sweden"
+        },
+        {
+            "username": "UniInitialization",
+            "slug": "HeroIvar",
+            "name": "Ivar the Boneless",
+            "description": "commander of the Great Heathen Army"
+        },
+        {
+            "username": "UniInitialization",
+            "slug": "HeroLagertha",
+            "name": "Lagertha the Shieldmaiden",
+            "description": "aka Hlaðgerðr"
+        },
+        {
+            "username": "UniInitialization",
+            "slug": "HeroRagnar",
+            "name": "Ragnar Lothbrok",
+            "description": "aka Ragnar Sigurdsson"
+        },
+        {
+            "username": "UniInitialization",
+            "slug": "HeroThora",
+            "name": "Thora Town-hart",
+            "description": "daughter of Earl Herrauðr of Götaland"
+        }
+    ],
+    "Villian": [
+        {
+            "username": "UniInitialization",
+            "slug": "VillainMadelyn",
+            "name": "Madelyn",
+            "description": "the cat whisperer"
+        },
+        {
+            "username": "UniInitialization",
+            "slug": "VillainHaley",
+            "name": "Haley",
+            "description": "pen wielder"
+        },
+        {
+            "username": "UniInitialization",
+            "slug": "VillainElla",
+            "name": "Ella",
+            "description": "fashionista"
+        },
+        {
+            "username": "UniInitialization",
+            "slug": "VillainLandon",
+            "name": "Landon",
+            "description": "Mandalorian mauler"
+        }
+    ]
+}
