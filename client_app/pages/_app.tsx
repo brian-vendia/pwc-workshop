@@ -6,25 +6,21 @@ import SiteLayout from "../components/SiteLayout";
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { ApolloProvider } from "@apollo/client";
+const shareEnv=require('../share_env.json');
 
 function createApolloClient() {
   // Declare variable to store authToken
   let token;
 
   const httpLink = createHttpLink({
-    uri: process.env.VENDIA_GRAPHQL_API,
+    uri: shareEnv.gqlAPI,
   });
 
   const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    if (typeof window !== "undefined") {
-      token = localStorage.getItem("authToken");
-    }
-    // return the headers to the context so httpLink can read them
     return {
       headers: {
         ...headers,
-        "X-API-Key": process.env.VENDIA_GRAPHQL_KEY,
+        "X-API-Key":shareEnv.gqlKey,
       },
     };
   });
