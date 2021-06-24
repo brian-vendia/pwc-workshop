@@ -195,7 +195,7 @@ return(
           <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
         </button>
       </div>
-    <div className="mt-6 sm:mt-0 sm:py-12 bg-white ml-5 z-0">{children}</div>
+    <div className="mt-1 md:mt-6 sm:mt-0 sm:py-5 bg-white mx-0 md:mx-5 z-0">{children}</div>
   </div>
   </div>
 );

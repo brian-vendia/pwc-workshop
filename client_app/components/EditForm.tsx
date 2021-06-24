@@ -77,7 +77,7 @@ export default function EditForm(props: any) {
     }
     return (
         <section>
-            <Card className="bg-gray-100 border border-gray-200 my-5 mx-10 max-w-4xl">
+            <Card className="bg-gray-100 border border-gray-200 my-5 mx-3 md:mx-10 w-auto md:max-w-4xl">
                 <Card.Title className="font-bold p-3 bg-gray-800 text-white my-0"><h3>{header}</h3></Card.Title>
 
                 <Card.Body className="bg-gray-100">
