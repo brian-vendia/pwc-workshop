@@ -25,13 +25,12 @@ function createApolloClient() {
     };
   });
 
-  const client = new ApolloClient({
+  return new ApolloClient({
     ssrMode: typeof window === "undefined",
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
 
-  return client;
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
