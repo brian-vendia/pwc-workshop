@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { useRouter } from 'next/router'
 import md5 from 'md5';
+import Link from 'next/link';
 
 import {
   UserGroupIcon,
@@ -94,18 +95,19 @@ return(
                 <nav className="mt-5 flex-shrink-0 h-full overflow-y-auto" aria-label="Sidebar">
                 <div className="px-2 space-y-1">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
-                      className={classNames(
-                        current(item) ? 'bg-gray-500 text-white' : 'text-gray-800 hover:text-white hover:bg-gray-500',
-                        'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                      )}
+                      
                       aria-current={ current(item) ? 'page' : undefined}
-                    >
-                      <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-gray-600" aria-hidden="true" />
+                    ><div  className={classNames(
+                      current(item) ? 'bg-gray-500 text-white' : 'text-gray-800 hover:text-white hover:bg-gray-500',
+                      'group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer'
+                    )}>
+                      <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-gray-600 cursor-pointer" aria-hidden="true" />
                       {item.name}
-                    </a>
+                      </div>
+                    </Link>
                   ))}
                 </div>
                 
@@ -141,34 +143,22 @@ return(
             <nav className=" mt-10 flex-1 flex flex-col overflow-y-auto" aria-label="Sidebar">
             <div className="px-2 space-y-1">
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
-                  className={classNames(
-                    current(item) ? 'bg-gray-500 text-white' : 'text-gray-600 hover:text-white hover:bg-gray-600',
-                    'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
-                  )}
+                
                   aria-current={ current(item) ? 'page' : undefined}
-                >
-                  <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-gray-400" aria-hidden="true" />
+                ><div   className={classNames(
+                  current(item) ? 'bg-gray-500 text-white' : 'text-gray-600 hover:text-white hover:bg-gray-600',
+                  'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md cursor-pointer'
+                )}>
+                  <item.icon className="mr-4 flex-shrink-0 h-6 w-6 cursor-pointer text-gray-400" aria-hidden="true" />
                   {item.name}
-                </a>
+                  </div>
+                </Link>
               ))}
             </div>
-            <div className="mt-6 pt-6">
-              <div className="px-2 space-y-1">
-                {secondaryNavigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600"
-                  >
-                    <item.icon className="mr-4 h-6 w-6 text-cyan-200" aria-hidden="true" />
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
+    
           </nav>
           }
           

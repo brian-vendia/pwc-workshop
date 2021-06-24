@@ -37,11 +37,16 @@ function createApolloClient(node: any) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [client, setClient] = useState(createApolloClient(shareEnv.nodes[0]));
   const [node, setNode] = useState(shareEnv.nodes[0]);
-
+  const handleNode = (node:any) => {
+    console.log("selected node "+JSON.stringify(node));
+    setClient(createApolloClient(node)); 
+    setNode(node);
+  }
   return (
     <div>
-      <ApolloProvider client={createApolloClient(node)}>
+      <ApolloProvider client={client}>
         <SiteLayout>
           <Component {...pageProps} />
         </SiteLayout>
@@ -51,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <DropdownButton title={`Uni Node (${node.name}) `} drop="up" variant="secondary">
             {shareEnv.nodes.map((node:any)=>{
               return (
-                <Dropdown.Item onSelect={()=>{setNode(node)}}>{`${node.name} | ${node.region}`}</Dropdown.Item>
+                <Dropdown.Item onSelect={()=>{handleNode(node)}} >{`${node.name} | ${node.region}`}</Dropdown.Item>
               )
             })}
           </DropdownButton></span>

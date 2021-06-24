@@ -1,5 +1,6 @@
 import {Card,Button,Modal} from 'react-bootstrap';
 import {useRouter} from 'next/router'
+import Link from 'next/link';
 import {
 TrashIcon,
 PencilIcon
@@ -31,10 +32,10 @@ export default function HeroCard(props:any){
                 <TrashIcon className="h-6 w-6 mr-3" aria-hidden="true" />Delete
                   </Button>
                   
-                <a className="w-full flex" href={`${router.pathname}/${props.data.id}`} ><Button variant="secondary" className="w-full flex text-2xl items-center mx-3">
+                <Link href={`${router.pathname}/${props.data.id}`} ><Button variant="secondary" className="w-full flex text-2xl items-center mx-3">
                 <PencilIcon className="h-6 w-6 mr-3" aria-hidden="true" />Edit
                   </Button>
-                  </a>
+                  </Link>
               </div>
               </Card.Body>
             </Card>
