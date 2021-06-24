@@ -132,7 +132,7 @@ return(
           <span className="text-white ml-3 font-bold text-2xl">
             VENDIA
           </span>
-          <span className="text-white font-bold text-2xl text-green-400">
+          <span className="text-green-400 font-bold text-2xl">
             HEROES
           </span>
             </span>
@@ -183,7 +183,7 @@ return(
           <span className="text-white ml-3 font-bold text-2xl">
             VENDIA
           </span>
-          <span className="text-white font-bold text-2xl text-green-400">
+          <span className=" font-bold text-2xl text-green-400">
             HEROES
           </span>
             </span>
