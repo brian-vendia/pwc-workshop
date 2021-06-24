@@ -6,6 +6,7 @@
     "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next dev -p 8080",
+    "start-1": "next dev -p 8081",
     "prestart": "node utils/generate_registration.js && node utils/uni_controller.js",
     "info": "node utils/info.js"
   },
