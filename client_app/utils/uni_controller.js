@@ -4,40 +4,40 @@ const schema = require("../../uni_configuration/schema.json");
 const initState = require("../../uni_configuration/initial-state.json");
 const ora = require("ora");
 const stringifyObject = require('stringify-object');
-const fs=require("fs");
-const envFile="share_env.json";
-const sleep=function(ms) {
+const fs = require("fs");
+const envFile = "share_env.json";
+const sleep = function (ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
-const post=async function(query,creds){
-    data = { query };
-    return await api.signRequest({
-      credentials: {
-        accessKeyId: creds.accessKeyId,
-        secretAccessKey: creds.secretAccessKey,
-        sessionToken: creds.sessionToken,
-      },
-      host: "share.services.vendia.net",
-      region: "us-east-1",
-      method: "POST",
-      baseURL: "https://share.services.vendia.net",
-      body: data,
-    })("/share", { body: JSON.stringify(data) });
+const post = async function (query, creds) {
+  data = { query };
+  return await api.signRequest({
+    credentials: {
+      accessKeyId: creds.accessKeyId,
+      secretAccessKey: creds.secretAccessKey,
+      sessionToken: creds.sessionToken,
+    },
+    host: "share.services.vendia.net",
+    region: "us-east-1",
+    method: "POST",
+    baseURL: "https://share.services.vendia.net",
+    body: data,
+  })("/share", { body: JSON.stringify(data) });
 };
 
 const createUniQuery = `
 mutation CreateUni{
     register(input:{
         name: "${registration.name}"
-        schema: "${JSON.stringify(schema).replaceAll('"','\\"')}"
+        schema: "${JSON.stringify(schema).replaceAll('"', '\\"')}"
         sku: SHARE
-        initState: "${JSON.stringify(initState).replaceAll('"','\\"')}"
-        nodes: ${stringifyObject(registration. nodes, {
-          indent: '  ',
-          singleQuotes: false
-      })}
+        initState: "${JSON.stringify(initState).replaceAll('"', '\\"')}"
+        nodes: ${stringifyObject(registration.nodes, {
+  indent: '  ',
+  singleQuotes: false
+})}
       }
       ) 
 }
@@ -49,6 +49,8 @@ query getStatus{
         name
         status
         nodes {
+          name
+          region
           resources {
             graphqlApi {
               apiKey
@@ -84,54 +86,63 @@ api
   .then(async (creds) => {
     spinner.succeed("Logged in to share").start("Checking if Uni Exists");
     //Check if uni exists
-    let statusResponse = await post(getUniQuery,creds);
-    let statusValue="";
-    let gqlAPI,gqlKey,gqlWSUrl;
+    let statusResponse = await post(getUniQuery, creds);
+    let statusValue = "";
+    let gqlAPI, gqlKey, gqlWSUrl;
     if (statusResponse.data.data == null) {
-      spinner.succeed("Uni does not exist").start("Registering new Uni "+registration.name);
+      spinner.succeed("Uni does not exist").start("Registering new Uni " + registration.name);
       //create new uni
       //  console.debug(createUniQuery)
-      let createResponse = await post(createUniQuery,creds);
-      if(createResponse.data.errors){
-        if(createResponse.data.errors.length>0){
-        throw createResponse.data.errors;
+      let createResponse = await post(createUniQuery, creds);
+      if (createResponse.data.errors) {
+        if (createResponse.data.errors.length > 0) {
+          throw createResponse.data.errors;
         }
       }
-      else{
-        statusResponse = await post(getUniQuery,creds);
-        statusValue=statusResponse.data.data.getUni.status;
-        spinner.start("Registered "+registration.name+". Waiting for Node(s) to become available");
-        while(statusValue=="PENDING_REGISTRATION"){
+      else {
+        statusResponse = await post(getUniQuery, creds);
+        statusValue = statusResponse.data.data.getUni.status;
+        spinner.start("Registered " + registration.name + ". Waiting for Node(s) to become available");
+        while (statusValue == "PENDING_REGISTRATION") {
           await sleep(20000);
-          statusResponse = await post(getUniQuery,creds);
-          statusValue=statusResponse.data.data.getUni.status;
+          statusResponse = await post(getUniQuery, creds);
+          statusValue = statusResponse.data.data.getUni.status;
         }
-        if(statusValue=="RUNNING"){
+        if (statusValue == "RUNNING") {
           spinner.succeed("Uni is Running");
         }
-        else{
-          throw "Uni entered the "+statusValue+" state";
+        else {
+          throw "Uni entered the " + statusValue + " state";
         }
-        
+
       }
 
     } else {
-      spinner.warn("Uni already exists. If you desire a new Uni, delete the uni_configuration/registration.json file.").succeed("Uni already Registered"); 
+      spinner.warn("Uni already exists. If you desire a new Uni, delete the uni_configuration/registration.json file.").succeed("Uni already Registered");
     }
-    
+
     //update config
     spinner.start("Updating Configuration");
-    statusResponse = await post(getUniQuery,creds);
-    gqlAPI=statusResponse.data.data.getUni.nodes[0].resources.graphqlApi.httpsUrl;
-    gqlKey=statusResponse.data.data.getUni.nodes[0].resources.graphqlApi.apiKey;
-    gqlWSUrl=statusResponse.data.data.getUni.nodes[0].resources.graphqlApi.websocketUrl;
-    user=process.env.VENDIA_SHARE_USERNAME;
-    fs.writeFileSync(envFile, Buffer.from(JSON.stringify({gqlAPI,gqlKey,gqlWSUrl,user})));
+    statusResponse = await post(getUniQuery, creds);
+    user = process.env.VENDIA_SHARE_USERNAME;
+    let envFileData = {
+      user,
+      nodes: []
+    }
+    statusResponse.data.data.getUni.nodes.map((node) => {
+      envFileData.nodes.push({
+        name:node.name,
+        region:node.region,
+        gqlAPI: node.resources.graphqlApi.httpsUrl,
+        gqlKey: node.resources.graphqlApi.apiKey,
+        gqlWSUrl: node.resources.graphqlApi.websocketUrl
+      })
+    });
+    fs.writeFileSync(envFile, Buffer.from(JSON.stringify(envFileData)));
 
-    spinner.succeed("Updated GQL Endpoint "+gqlAPI);
+    spinner.succeed("Updated GQL Endpoint " + gqlAPI);
   })
   .catch((err) => {
-    console.error("error");
-    console.error(err.data ? JSON.stringify(err.data) : JSON.stringify(err));
-    spinner.fail("Error occurred. See console output for details.");
+
+    spinner.fail("Error occurred: " + JSON.stringify(err));
   });
