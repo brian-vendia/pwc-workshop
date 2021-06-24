@@ -78,7 +78,7 @@ return(
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="absolute top-0 right-0 -mr-12 pt-2">
+              <div className="absolute top-0 right-0 -mr-12 pt-2 z-50">
                 <button
                   className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                   onClick={() => setSidebarOpen(false)}
@@ -126,7 +126,7 @@ return(
       <div className="flex flex-col w-64">
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto">
-          <div className=" whitespace-nowrap items-center px-4 bg-gray-600 h-12 mt-0 absolute top-0 w-full">
+          <div className=" whitespace-nowrap items-center px-4 bg-gray-600 h-12 mt-0 absolute top-0 w-full z-50">
           <span className="flex items-center mt-1">
           <img className=" h-8" src="/images/square_trans.png" aria-label="logo" alt="logo"/>
           <span className="text-white ml-3 font-bold text-2xl">
@@ -195,7 +195,7 @@ return(
           <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
         </button>
       </div>
-    <div className="mt-6 sm:mt-0 sm:py-12 bg-white ml-5">{children}</div>
+    <div className="mt-6 sm:mt-0 sm:py-12 bg-white ml-5 z-0">{children}</div>
   </div>
   </div>
 );
