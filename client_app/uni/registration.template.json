@@ -1,0 +1,7 @@
+{
+    "name": "",
+    "schema": "schema.json",
+    "initState":"initial-state.json",
+    "nodes": [
+    ]
+}

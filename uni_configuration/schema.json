@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://vendia.net/schemas/solutions/kinesis-to-share.json",
+    "$id": "http://vendia.net/schemas/solutions/vendia-share-workshop.json",
     "title": "heroes-react",
     "description": "Storing hero and villian data",
     "type": "object",
