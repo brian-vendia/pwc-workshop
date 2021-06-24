@@ -11,12 +11,16 @@ import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import UpdateVillian from '../gql/UpdateVillian';
 import UpdateHero from '../gql/UpdateHero';
+import AddVillian from '../gql/AddVillian';
+import AddHero from '../gql/AddHero';
 
 export default function EditForm(props: any) {
-    const [updateItem, { error: updateError,data:updateData }] = useMutation(props.class=="hero"?UpdateHero():UpdateVillian());
-
+    const [updateItem, { error: updateError, data: updateData }] = useMutation(props.class == "hero" ? UpdateHero() : UpdateVillian());
+    const [addItem, { error: addError, data: addData }] = useMutation(props.class == "hero" ? AddHero() : AddVillian());
     const [showError, setShowError] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
     const handleClose = () => setShowError(false);
+
     let header = "";
     if (props.data.id) {
         header = props.class + " " + props.data.id;
@@ -33,13 +37,42 @@ export default function EditForm(props: any) {
         event.preventDefault();
         const input = event.target;
         //has an id? needs an update
-        if(props.data.id){
-            updateItem({variables:{id:props.data.id,name:input.name.value,description:input.description.value,slug:input.slug.value,username:input.username.value}});
-            router.back();
+        if (props.data.id) {
+            const updateRes = await updateItem({ variables: { id: props.data.id, name: input.name.value, description: input.description.value, slug: input.slug.value, username: input.username.value } });
+            if (updateRes.errors) {
+                setErrorMsg(JSON.stringify(updateRes.errors));
+                setShowError(true);
+            }
+            else if (updateRes.data) {
+                if (updateRes.data.error) {
+                    setErrorMsg(JSON.stringify(updateRes.data.error));
+                    setShowError(true);
+                }
+                else {
+                    router.back();
+                }
+            } else {
+                router.back();
+            }
         }
         //no id? this is net new
-        else{   
-
+        else {
+            const addRes = await addItem({ variables: { name: input.name.value, description: input.description.value, slug: input.slug.value, username: input.username.value } });
+            if (addRes.errors) {
+                setErrorMsg(JSON.stringify(addRes.errors));
+                setShowError(true);
+            }
+            else if (addRes.data) {
+                if (addRes.data.error) {
+                    setErrorMsg(JSON.stringify(addRes.data.error));
+                    setShowError(true);
+                }
+                else {
+                    router.back();
+                }
+            } else {
+                router.back();
+            }
         }
     }
     return (
@@ -82,20 +115,16 @@ export default function EditForm(props: any) {
 
                 </Card.Body>
             </Card>
-            {updateData && (
-                <Modal show={updateError || updateData.error} onHide={handleClose} backdrop="static">
+
+            <Modal show={showError} backdrop="static">
                 <Modal.Header closeButton>
                     <Modal.Title>Error</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>An error occured {JSON.stringify(updateError)} <br/><br/>{JSON.stringify(updateData.error)}</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-                </Modal>
-            )}
-          
+                <Modal.Body>An error occured {errorMsg}</Modal.Body>
+
+            </Modal>
+
+
         </section>
     )
 }

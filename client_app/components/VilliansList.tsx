@@ -3,9 +3,18 @@ import listVilliansQuery from "../gql/ListVillians";
 import ContentLoader from 'react-content-loader'
 import React, { useState } from "react";
 import Villian from './HeroCard';
+import {useRouter} from 'next/router'
+
 import RemoveVillianQuery from "../gql/RemoveVillian";
+import {
+  ViewGridAddIcon
+
+} from '@heroicons/react/outline';
+import { Button } from "react-bootstrap";
 
 export default function VilliansList(props: any) {
+  const router = useRouter()
+
   const { data, loading, error,refetch } = useQuery(listVilliansQuery(),{
     pollInterval:2000
   });
@@ -38,8 +47,8 @@ export default function VilliansList(props: any) {
   else
     return (
       <section id="heroList">
-        <span className="px-10 font-extrabold text-green-800 text-4xl">VILLIANS</span>
-        <ul role="presentation">
+      <span className="px-10 font-extrabold text-green-800 text-4xl">VILLIANS<a href={`${router.pathname}/new`}><Button className="h-12 w-12 mx-3 my-3" variant="secondary"><ViewGridAddIcon /></Button></a>
+</span>        <ul role="presentation">
           {loading && (
             <ContentLoader
             speed={1}

@@ -1,13 +1,19 @@
 import { useQuery, gql, useMutation } from "@apollo/client";
 import listHerosQuery from '../gql/ListHeroes';
 import removeHeroQuery from '../gql/RemoveHero';
+import {useRouter} from 'next/router'
 
 import ContentLoader from 'react-content-loader'
 import React, { useState } from "react";
 import Hero from './HeroCard';
-import { Toast } from "react-bootstrap";
+import { Toast,Button } from "react-bootstrap";
+import {
+  ViewGridAddIcon
 
+} from '@heroicons/react/outline';
 export default function HeroList(props: any) {
+  const router = useRouter()
+
   const { data, loading, error, refetch } = useQuery(listHerosQuery(),{
     pollInterval: 2000,
   });
@@ -39,7 +45,8 @@ export default function HeroList(props: any) {
   else
     return (
       <section id="heroList">
-        <span className="px-10 font-extrabold text-green-800 text-4xl">HEROES</span>
+        <span className="px-10 font-extrabold text-green-800 text-4xl">HEROES<a href={`${router.pathname}/new`}><Button className="h-12 w-12 mx-3 my-3" variant="secondary"><ViewGridAddIcon /></Button></a>
+</span>
         <ul role="presentation">
           {loading && (
             <ContentLoader
