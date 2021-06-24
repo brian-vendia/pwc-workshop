@@ -36,7 +36,6 @@ yarn-error.log*
 .vscode
 client_app/uni/registration.json
 
-*.js
 !jest.config.js
 *.d.ts
 node_modules
@@ -47,3 +46,7 @@ cdk.out
 
 # Uni files
 registration.json
+share_env.json
+
+#NEXTJS
+.next

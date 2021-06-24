@@ -1,33 +1,53 @@
-import {Card,Button} from 'react-bootstrap';
+import {Card,Button,Modal} from 'react-bootstrap';
 import {
 TrashIcon,
 PencilIcon
 
 } from '@heroicons/react/outline'
+import { useState } from 'react';
 
 export default function HeroCard(props:any){
-
-   return (<Card className="bg-gray-100 border border-gray-200 my-5 mx-10 max-w-4xl">
-              <Card.Body>
-                <Card.Title className="font-bold text-3xl pt-5 px-5">{props.data.name}</Card.Title>
-              </Card.Body>
-              <div className="text-2xl text-gray-500 px-5">{props.data.description}</div>
-              <div className="mt-3 px-5 pb-4">
+  const [showDelete, setShowDelete] = useState(false);
+  const handleClose = () => setShowDelete(false);
+  const confirmDelete = () => setShowDelete(true);
+  const handleDelete = () => {
+    if(props.onDelete){
+      props.onDelete(props.data.id);
+    }
+    handleClose();
+  } 
+   return (<div><Card className="bg-gray-100 border border-gray-200 my-5 mx-10 max-w-4xl">
+              <Card.Body className="bg-gray-100">
+                <Card.Title className="font-bold text-xl "><h2>{props.data.name}</h2></Card.Title>
+              <div className="text-2xl text-gray-500 px-3">{props.data.description}</div>
+              <div className="mt-3 px-3 pb-4">
                   <span className="text-gray-500">Created By</span>
                   <span className="text-black ml-1">{props.data.username}</span></div>
               <div className="w-full flex items-center">
-                <div className="flex p-5 items-center flex-grow w-1/2 h-12 pt-3  text-center border border-gray-300 bg-white">
-                <Button className="w-full flex p-5 text-xl items-center">
+                <Button variant="secondary" onClick={confirmDelete} className="flex w-full mx-3">
                 <TrashIcon className="h-6 w-6 mr-3" aria-hidden="true" />Delete
                   </Button>
                   
-                </div>
-                <div className="flex p-5 items-center flex-grow w-1/2 h-12 pt-3  text-center border border-gray-300 bg-white">
-                <Button className="w-full flex p-5 text-xl items-center">
+                <Button variant="secondary" className="w-full flex text-2xl items-center mx-3">
                 <PencilIcon className="h-6 w-6 mr-3" aria-hidden="true" />Edit
                   </Button>
-                </div>
               </div>
+              </Card.Body>
             </Card>
+            <Modal show={showDelete} onHide={handleClose}   backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Deletion</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you certain you want to delete <span className="font-bold">{props.data.name}</span> ?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+            </div>
             )
 }

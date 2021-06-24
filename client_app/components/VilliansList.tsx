@@ -1,12 +1,32 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, useMutation } from "@apollo/client";
 import listVilliansQuery from "../gql/ListVillians";
 import ContentLoader from 'react-content-loader'
-import React from "react";
+import React, { useState } from "react";
 import Villian from './HeroCard';
+import RemoveVillianQuery from "../gql/RemoveVillian";
 
 export default function VilliansList(props: any) {
-  const { data, loading, error } = useQuery(listVilliansQuery());
+  const { data, loading, error,refetch } = useQuery(listVilliansQuery(),{
+    pollInterval:2000
+  });
 
+  const [showError, setShowError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const [RemoveVillian, { error: RemoveVillianError,data:RemoveVillianData }] = useMutation(RemoveVillianQuery());
+
+  const handleDelete = (id: string) => {
+    RemoveVillian({ variables: { id } });
+    if (RemoveVillianError) {
+      setErrorMsg(RemoveVillianError.message);
+      setShowError(true);
+    }
+    else if(RemoveVillianData){
+      setErrorMsg(RemoveVillianData);
+      setShowError(true);
+    }
+    refetch();
+  }
  
   if (error) {
     return (
@@ -37,7 +57,7 @@ export default function VilliansList(props: any) {
           )}
           {data && data.listVillians.Villians.map((villian: any) => {
             return (
-              <li><Villian data={villian}/></li>
+              <li><Villian data={villian} onDelete={handleDelete}/></li>
             )
           })}
 

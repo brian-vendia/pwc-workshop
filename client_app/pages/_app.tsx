@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { Provider } from "next-auth/client";
 import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import SiteLayout from "../components/SiteLayout";
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
