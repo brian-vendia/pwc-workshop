@@ -125,7 +125,8 @@ api
     gqlAPI=statusResponse.data.data.getUni.nodes[0].resources.graphqlApi.httpsUrl;
     gqlKey=statusResponse.data.data.getUni.nodes[0].resources.graphqlApi.apiKey;
     gqlWSUrl=statusResponse.data.data.getUni.nodes[0].resources.graphqlApi.websocketUrl;
-    fs.writeFileSync(envFile, Buffer.from(JSON.stringify({gqlAPI,gqlKey,gqlWSUrl})));
+    user=process.env.VENDIA_SHARE_USERNAME;
+    fs.writeFileSync(envFile, Buffer.from(JSON.stringify({gqlAPI,gqlKey,gqlWSUrl,user})));
 
     spinner.succeed("Updated GQL Endpoint "+gqlAPI);
   })

@@ -1,4 +1,5 @@
 import {Card,Button,Modal} from 'react-bootstrap';
+import {useRouter} from 'next/router'
 import {
 TrashIcon,
 PencilIcon
@@ -7,6 +8,7 @@ PencilIcon
 import { useState } from 'react';
 
 export default function HeroCard(props:any){
+  const router = useRouter()
   const [showDelete, setShowDelete] = useState(false);
   const handleClose = () => setShowDelete(false);
   const confirmDelete = () => setShowDelete(true);
@@ -17,8 +19,9 @@ export default function HeroCard(props:any){
     handleClose();
   } 
    return (<div><Card className="bg-gray-100 border border-gray-200 my-5 mx-10 max-w-4xl">
+                     <Card.Title className="font-bold text-xl text-white bg-gray-800 p-3 my-0"><h2>{props.data.name}</h2></Card.Title>
+
               <Card.Body className="bg-gray-100">
-                <Card.Title className="font-bold text-xl "><h2>{props.data.name}</h2></Card.Title>
               <div className="text-2xl text-gray-500 px-3">{props.data.description}</div>
               <div className="mt-3 px-3 pb-4">
                   <span className="text-gray-500">Created By</span>
@@ -28,9 +31,10 @@ export default function HeroCard(props:any){
                 <TrashIcon className="h-6 w-6 mr-3" aria-hidden="true" />Delete
                   </Button>
                   
-                <Button variant="secondary" className="w-full flex text-2xl items-center mx-3">
+                <a className="w-full flex" href={`${router.pathname}/${props.data.id}`} ><Button variant="secondary" className="w-full flex text-2xl items-center mx-3">
                 <PencilIcon className="h-6 w-6 mr-3" aria-hidden="true" />Edit
                   </Button>
+                  </a>
               </div>
               </Card.Body>
             </Card>

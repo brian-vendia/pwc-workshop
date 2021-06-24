@@ -1,5 +1,4 @@
 import type { AppProps } from "next/app";
-import { Provider } from "next-auth/client";
 import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,13 +35,11 @@ function createApolloClient() {
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider session={pageProps.session}>
       <ApolloProvider client={createApolloClient()}>
         <SiteLayout>
           <Component {...pageProps} />
         </SiteLayout>
       </ApolloProvider>
-    </Provider>
   );
 }
 export default MyApp;
