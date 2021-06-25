@@ -1,0 +1,12 @@
+{
+    "name": "test-heroes-react",
+    "schema": "schema.json",
+    "initState": "initial-state.json",
+    "nodes": [
+        {
+            "name": "Node1",
+            "userId": "you@domain.com",
+            "region": "us-east-1"
+        }
+    ]
+}
