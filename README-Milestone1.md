@@ -19,7 +19,7 @@ share login
   
 The `share uni create` command creates the Uni.  For this step, we'll use the `registration.singlenode.json` file.  Pick a unique `name` for your Uni  that begins with `test-`.  By default, all Unis share a common namespace so here is your chance to get creative.
 
-You will also wan to update the `userId` attribute of the node to reflect your personal Vendia Share username (i.e. your email address) before creating the Uni.
+You will also want to update the `userId` attribute of the node to reflect your personal Vendia Share username (i.e. your email address) before creating the Uni.
 
 ```bash
 cd uni_configuration
