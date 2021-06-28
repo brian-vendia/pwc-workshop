@@ -1,12 +1,12 @@
 # Milestone 1 - Create a Single Node Uni
-In this section, we will deploy a new Uni called "test-heros-react"
+In this section, we will deploy a new Uni called **test-heros-react**
 
 ## Explore the /uni_configuration directory
-The /uni_configuration directory contains several pre-created files that will help us quickly create a new Uni 
+The /uni_configuration directory contains several pre-created files that will help us quickly create a new Uni.
 
 * __schema.json__ - Contains the data model for this Uni, which defines two types of characters: Heros :) and Villians :(.
 * __initial-state.json__ - Contains seed data for this Uni, which creates several characters for us to use in workshop
-* __registration.singlenode.json. - Contains cloud, region, and account information for this Uni
+* __registration.singlenode.json__ - Contains cloud, region, and account information for this Uni
 
 ## Create the Uni
 Now it's time to create a Uni based on the files from the previous section.
@@ -17,7 +17,9 @@ If not already logged in to the share service do so by running [`share login`](h
 share login
 ```
   
-The `share uni create` command creates the Uni.  For this step, we'll use the `registration.singlenode.json` file.  Pick a unique `name` for your Uni  that begins with `test-`.  By default, all Unis share a common namespace so here is your chance to get creative.  Update the `userId` attribute of the node to reflect your Vendia Share username (i.e. your email address).
+The `share uni create` command creates the Uni.  For this step, we'll use the `registration.singlenode.json` file.  Pick a unique `name` for your Uni  that begins with `test-`.  By default, all Unis share a common namespace so here is your chance to get creative.
+
+You will also wan to update the `userId` attribute of the node to reflect your personal Vendia Share username (i.e. your email address) before creating the Uni.
 
 ```bash
 cd uni_configuration
