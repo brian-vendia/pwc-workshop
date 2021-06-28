@@ -2,7 +2,7 @@
 In this section, we will deploy a new Uni called "test-heros-react"
 
 ## Explore the /uni_configuration directory
-The /uni_configuration directory contains several pre-crated files that will help us quickly create a new Uni 
+The /uni_configuration directory contains several pre-created files that will help us quickly create a new Uni 
 
 * __schema.json__ - Contains the data model for this Uni, which defines two types of characters: Heros :) and Villians :(.
 * __initial-state.json__ - Contains seed data for this Uni, which creates several characters for us to use in workshop
@@ -40,15 +40,35 @@ Using the GraphQL Explorer, list all the Heroes.  These should match what you sa
 
 ```bash
 
-//TODO - ADD QUERY HERE
+query {
+    listHeros {
+        Heros {
+            description
+            id
+            name
+            slug
+            username
+        }
+    }
+}
 
 ```
 
-Using the GraphQL Explorer, list all the Villians.  These should match what you saw in `init-state.json`
+Using the GraphQL Explorer, list all the Villains.  These should match what you saw in `init-state.json`
 
 ```bash
 
-//TODO - ADD QUERY HERE
+query {
+    listVillians {
+        Villians {
+            description
+            id
+            name
+            slug
+            username
+        }
+    }
+}
 
 ```
 
@@ -67,7 +87,18 @@ Using the GraphQL Explorer from Node1, list all the Heroes.  These should match 
 
 ```bash
 
-//TODO - ADD QUERY HERE
+query {
+    listHeros {
+        Heros {
+            description
+            id
+            name
+            slug
+            username
+        }
+    }
+}
+
 
 ```
 
@@ -75,7 +106,11 @@ Using the GraphQL Editor from Node1, add a new Hero.
 
 ```bash
 
-//TODO - ADD MUTATION HERE
+mutation add($description:String,$name:String, $slug:String,$username:String) {
+    addHero_async( input: {description:$description, name: $name, slug: $slug, username: $username}) {
+        error
+    }
+}
 
 ```
 
@@ -83,6 +118,16 @@ Using the GraphQL Editor __from Node2__, list all the Heroes.  This list should 
 
 ```bash
 
-//TODO - ADD QUER HERE
+query {
+    listHeros {
+        Heros {
+            description
+            id
+            name
+            slug
+            username
+        }
+    }
+}
 
 ```

@@ -30,3 +30,6 @@ git clone https://github.com/brian-vendia/pwc-workshop.git
 # Milestones
 We'll incrementally create the multi-party web application through a series of Milestones.  Each Milestone assumes the Pre-Reqs and Initial Setup listed above, but they can be executed out of order.
 * [Milestone 1 - Create a Single Node Uni](/README-Milestone1.md)
+* [Milestone 2 - Integrate a Web Application](/README-Milestone2.md)
+* [Milestone 3 - Invite a Participant to Your Uni](/README-Milestone3.md)
+* [Milestone 4 - Collaborate on a Shared Uni](/README-Milestone4.md)
