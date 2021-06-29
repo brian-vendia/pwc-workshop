@@ -7,6 +7,10 @@ The `Invites.md` files contains a mapping of Senders and Recipients.
 ## Invite Participants
 Each Sender will invite the corresponding Recipient to join one of its Unis, using the Share UI.   The Recipient will receive the invitation and join the Uni. 
 
+**NOTE:** The Share CLI allows for invitations to be sent using `share uni invite`.
+
+
+
 The Recipient will get to choose the Region in which its Node will be created (it does not have to be in the same Region as the Sender's Node).
 
 Once the Recipient succeeds in accepting the invitation, a new Node will be created in about 5 minutes.
