@@ -3,7 +3,7 @@ In this section, you will collaborate on a shared Uni.
 
 ## Collaborate Using the GraphQL Explorer
 
-Using the GraphQL Explorer, each Participant should add a new Hero or Villain to the shared Uni created in the previous Milestone 
+Using the GraphQL Explorer, each Participant should add a new Hero or Villain to the shared Uni created in the previous Milestone.
 
 ```bash
 
