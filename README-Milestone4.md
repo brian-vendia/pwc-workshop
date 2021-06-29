@@ -27,7 +27,7 @@ mutation addVillain($description:String,$name:String, $slug:String,$username:Str
 
 ## Collaborate Using the Web Application
 
-Following the sames steps as in Milestone 2, connect the web application to your Node within the shared Uni
+Following the sames steps as in [Milestone 2](./README-Milestone2.md), connect the web application to your Node within the shared Uni.
 
 Once the web application is successfully connected, create, update, or delete a Hero or Villain. Tell your collaborating participant to confirm your changes are visible through their web application as well.
 
