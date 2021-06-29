@@ -1,5 +1,5 @@
 # Milestone 4 - Collaborate on a Shared Uni
-In this section, you will collaborate on a shared Uni.
+In this section, you will collaborate on the shared Uni created in Milestone 3.
 
 ## Collaborate Using the GraphQL Explorer
 
@@ -7,8 +7,8 @@ Using the GraphQL Explorer, each Participant should add a new Hero or Villain to
 
 ```bash
 
-mutation addHero($description:String,$name:String, $slug:String,$username:String) {
-    addHero_async( input: {description:$description, name: $name, slug: $slug, username: $username}) {
+mutation addHeroMutation {
+    addHero_async( input: {description: "", name: "", slug: "", username: "" } ) {
         error
     }
 }
@@ -17,8 +17,8 @@ mutation addHero($description:String,$name:String, $slug:String,$username:String
 
 ```bash
 
-mutation addVillain($description:String,$name:String, $slug:String,$username:String) {
-    addVillian_async( input: {description:$description, name: $name, slug: $slug, username: $username}) {
+mutation addVillainMutation {
+    addVillian_async( input: { description: "", name: "", slug: "", username: "" } ) {
         error
     }
 }
@@ -27,7 +27,7 @@ mutation addVillain($description:String,$name:String, $slug:String,$username:Str
 
 ## Collaborate Using the Web Application
 
-Following the sames steps as in [Milestone 2](./README-Milestone2.md), connect the web application to your Node within the shared Uni.
+Following the sames steps as in [Milestone 2](./README-Milestone2.md), connect the web application to your Node within the shared Uni.  Because there are multiple nodes involed, you may need to manually adjust the `share_env.json` file within the `./client_app` directory to point to the correct node in this shared Uni.
 
 Once the web application is successfully connected, create, update, or delete a Hero or Villain. Tell your collaborating participant to confirm your changes are visible through their web application as well.
 
@@ -58,6 +58,6 @@ share node get --uni <name_of_your_Uni> --node <name_of_your_Node>
 
 Wait for an initial email from AWS confirming you'd like to subscribe to the SNS topic.  If you don't confirm your subscription, you won't receive notification emails.  It may take several minutes for the AWS wiring to take effect. 
 
-Make a change to the Uni using either the GraphQL Explorer or the web application to generate a new block, and a corresponding email  
+Make a change to the Uni using either the GraphQL Explorer or the web application to generate a new block.  
 
 Wait for the emails to see how easily an event-driven, multi-node, multi-region application can be constructed with __Vendia Share__!

@@ -1,5 +1,5 @@
 {
-    "name": "test-heroes-react",
+    "name": "test-<name_of_your_choice>",
     "schema": "schema.json",
     "initState": "initial-state.json",
     "nodes": [
