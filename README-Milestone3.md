@@ -1,5 +1,5 @@
 # Milestone 3 - Invite a Participant to Your Uni
-In this section, you will ask one of your colleagues to join an existing Uni
+In this section, you will ask one of your colleagues to join your existing single-node Uni
 
 ## Find a Partner
 Find a partner to collaborate with.  One of you should be the invitation "Sender", the other the invitation "Recipient".  

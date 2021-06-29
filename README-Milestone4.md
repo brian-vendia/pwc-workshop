@@ -27,7 +27,14 @@ mutation addVillainMutation {
 
 ## Collaborate Using the Web Application
 
-Following the sames steps as in [Milestone 2](./README-Milestone2.md), connect the web application to your Node within the shared Uni.  Because there are multiple nodes involed, you may need to manually adjust the `share_env.json` file within the `./client_app` directory to point to the correct node in this shared Uni.
+Following the sames steps as in [Milestone 2](./README-Milestone2.md), connect the web application to your Node within the shared Uni.  Because there are multiple nodes involved now, you may need to manually adjust the `share_env.json` file within the `./client_app` directory to point to the correct node in the shared Uni.
+
+Get the current settings for your node in the shared Uni  
+```bash
+
+share node get --uni <name_of_your_Uni> --node <name_of_your_Node>
+
+```  
 
 Once the web application is successfully connected, create, update, or delete a Hero or Villain. Tell your collaborating participant to confirm your changes are visible through their web application as well.
 
