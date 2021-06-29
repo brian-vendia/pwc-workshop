@@ -1,5 +1,5 @@
 # Milestone 4 - Collaborate on a Shared Uni
-In this section, you will collaborate on a shared Uni
+In this section, you will collaborate on a shared Uni.
 
 ## Collaborate Using the GraphQL Explorer
 
