@@ -56,7 +56,7 @@ share node get --uni <name_of_your_Uni> --node <name_of_your_Node>
 
 ```  
 
-Wait for an initial email from AWS confirming you'd like to subscribe to the SNS topic.  If you don't confirm your subscription, you won't receive notification emails.  It takes about XYZ minutes for the AWS wiring to take effect. 
+Wait for an initial email from AWS confirming you'd like to subscribe to the SNS topic.  If you don't confirm your subscription, you won't receive notification emails.  It may take several minutes for the AWS wiring to take effect. 
 
 Make a change to the Uni using either the GraphQL Explorer or the web application to generate a new block, and a corresponding email  
 
