@@ -40,7 +40,7 @@ Once the Uni is ready, explore its contents using the Vendia Share UI (or the Gr
 
 https://share.vendia.net/uni
 
-Using the GraphQL Explorer, list all the Heroes.  These should match what you saw in `init-state.json`
+Using the GraphQL Explorer, list all the Heroes.  These should match what you saw in `initial-state.json`
 
 ```bash
 
@@ -58,7 +58,7 @@ query listHerosQuery {
 
 ```
 
-Using the GraphQL Explorer, list all the Villains.  These should match what you saw in `init-state.json`
+Using the GraphQL Explorer, list all the Villains.  These should match what you saw in `initial-state.json`
 
 ```bash
 
@@ -106,7 +106,7 @@ cd uni_configuration
 share uni create --config registration.multinode.json
 ```
 
-Using the GraphQL Explorer from __Node1__, list all the Heroes.  These should match what you saw in `init-state.json`
+Using the GraphQL Explorer from __Node1__, list all the Heroes.  These should match what you saw in `initial-state.json`
 
 ```bash
 
