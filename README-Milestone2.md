@@ -13,7 +13,6 @@ The /client_app directory contains a pre-crated React web application that will 
 ## Bonus Points - Integrate with the Multi-Node, Multi-Region Uni
 The  multi-node, multi-region Uni created in the previous section can also be used by this web application.  To make use of the Web Application's dynamic configuration feature:
 
-*   First, rename `registration.json` to `registration.json.old`
 *   Copy `registration.multinode.json` to a new file named `registration.json`
         
     >   Note:  It may be necessary to stop the application with ctrl+c if it is already running before it can be started again.
