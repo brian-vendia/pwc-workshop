@@ -11,11 +11,13 @@ The /client_app directory contains a pre-crated React web application that will 
 * See the  [Detailed Instruction](./client_app/README.md)
 
 ## Bonus Points - Integrate with the Multi-Node, Multi-Region Uni
-The  multi-node, multi-region Uni created in the previous section can also be used by this web application.  To make use of the Web Application's dynamic configuration feature, rename `registration.multinode.json` to `registration.json`.  This will overwrite the existing `registration.json` file.
+The  multi-node, multi-region Uni created in the previous section can also be used by this web application.  To make use of the Web Application's dynamic configuration feature:
 
-We can get the GraphQL configuration from the Vendia Share UI or with the `share` CLI.
+*   Copy `registration.multinode.json` to a new file named `registration.json`
+        
+    >   Note:  It may be necessary to stop the application with ctrl+c if it is already running before it can be started again.
 
-Once the new `registration.json` file has been created, you can start the web application from within the `/client_app` directory 
+*   Once the new `registration.json` file has been created, you can start the web application from within the `/client_app` directory.
 
 ```bash
 
@@ -23,7 +25,9 @@ npm run start
 
 ```
 
-Using the GraphQL Editor __from Node2__, list all the Heroes.  This list should include the Hero added from Node1 in the previous step.
+Visit the new Multi-node Uni at the [Uni Dashboard](https://share.vendia.net). Using the GraphQL Editor __from Node2__, list all the Heroes.  This list should include the Hero added from Node1 in the previous step.
+
+>   Note: If you are not certain of the Uni's name, you can find it in the registration.json file.
 
 ```bash
 
